@@ -1,0 +1,21 @@
+# Basic Settings
+theme = Afterglow
+unfocused-split-opacity = 0.5
+
+
+
+# Font Settings
+font-family = 'Fira Code Nerd Font Mono'
+font-family-bold = 'FiraCode Nerd Font Mono Bold'
+font-family-italic = 'Fira Code Nerd Font Mono'
+font-family-bold-italic = 'FiraCode Nerd Font Mono Bold'
+# only for macOS, draw with a thicker stroke
+font-thicken = true
+
+font-size = 12
+
+
+
+# Split Creation
+keybind = super+shift+down=new_split:down
+keybind = super+shift+right=new_split:right

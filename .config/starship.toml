@@ -1,0 +1,123 @@
+
+format = """\
+    $time\
+    $username\
+    $hostname\
+    $sudo\
+    $cmd_duration\
+    $aws\
+    $gcloud\
+    $azure\
+    $kubernetes\
+    $docker_context\
+    $line_break\
+    $directory\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_status\
+    $package\
+    $dotnet\
+    $elixir\
+    $elm\
+    $erlang\
+    $golang\
+    $java\
+    $julia\
+    $nim\
+    $nodejs\
+    $ocaml\
+    $php\
+    $purescript\
+    $python\
+    $ruby\
+    $rust\
+    $terraform\
+    $zig\
+    $nix_shell\
+    $conda\
+    $env_var\
+    $crystal\
+    $custom\
+    $line_break\
+    $jobs\
+    $battery\
+    $status\
+    $character\
+"""
+command_timeout = 1000 # 500ms default, too slow for asdf.
+# First Line - time, shell, package info, contexts
+[time]
+disabled = false
+time_format = "[%T%.3f]"
+format = "[$time]($style) "
+style = "dimmed white"
+[hostname]
+disabled = false
+ssh_only = false
+format = "@[$hostname]($style) "
+[username]
+disabled = false
+show_always = true
+format = "| [$user]($style)"
+[status]
+disabled = false
+map_symbol = true
+format = "[$symbol$status]($style) "
+[cmd_duration]
+disabled = true
+format = "[$duration]($style)"
+style = "dimmed white"
+[aws]
+disabled = false
+style = "bold #f8991d"
+expiration_symbol = "X"
+format = '[$symbol($profile:$region)(\[:$duration\])]($style) '
+[azure]
+disabled = false
+format = "on [$symbol($subscription)]($style) "
+symbol = "ﴃ "
+style = "blue bold"
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+style = "bold yellow"
+[terraform]
+disabled = false
+detect_extensions = ["tf", "hcl"]
+format = "[$symbol$version]($style) "
+[helm]
+disabled = false
+detect_files = ["helmfile.yaml", "Chart.yaml"]
+format = "[$symbol$version]($style) "
+[kubernetes]
+disabled = false
+format = '[$symbol$context:$namespace]($style)'
+# Second Line - Directory, Git
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = ".../"
+[git_branch]
+disabled = false
+always_show_remote = false
+format = "[$symbol($remote_name:)$branch]($style) "
+[git_commit]
+disabled = false
+only_detached = false
+tag_disabled = false
+[git_state]
+disabled = false
+[git_status]
+disabled = false
+format ='([\[$all_status$ahead_behind\]]($style) )'
+[sudo]
+style = "bold red"
+symbol = "|| "
+format = "[$symbol]($style)"
+disabled = false
+#[gcloud.region_aliases]
+#us-central1 = "uc1"
+#asia-northeast1 = "an1"
+[ruby]
+symbol = "🔺 "
+

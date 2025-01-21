@@ -1,0 +1,220 @@
+Host galaxy-platform
+  HostName 10.10.10.13
+
+# this is for ghostty
+Host *
+  SetEnv TERM=xterm-256color
+Host 10.10.10.2
+	HostName 10.10.10.2
+
+Host polaris
+	HostName 192.168.212.100
+    SetEnv TERM=xterm-256color
+Host polaris-station
+	HostName 192.168.212.101
+    SetEnv TERM=xterm-256color
+Host cosmos.nebula.megavolt.io
+	HostName cosmos.nebula.megavolt.io
+
+Host orion-local
+	HostName 192.168.212.100
+	User helloben
+Host orion.narwhal-velociraptor.ts.net
+	HostName orion.narwhal-velociraptor.ts.net
+	User helloben
+
+Host cortex.narwhal-velociraptor.ts.net
+	HostName cortex.narwhal-velociraptor.ts.net
+	User helloben
+Host mv-mgt-01
+	HostName 10.10.10.10
+	User helloben
+	Port 22
+Host *
+    IdentityAgent "~/.1password/agent.sock"
+# This is for old cisco switches
+Host 10.10.10.105
+    Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+    MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-sha2-256
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+    PubkeyAcceptedAlgorithms ssh-rsa
+    HostkeyAlgorithms ssh-rsa
+
+Host 10.10.10.106
+    Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+    MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-sha2-256
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+    PubkeyAcceptedAlgorithms ssh-rsa
+    HostkeyAlgorithms ssh-rsa
+
+Host 10.10.10.107
+    Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+    MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-sha2-256
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+    PubkeyAcceptedAlgorithms ssh-rsa
+    HostkeyAlgorithms ssh-rsa
+# ------------START-CODER-----------
+# This section is managed by coder. DO NOT EDIT.
+#
+# You should not hand-edit this section unless you are removing it, all
+# changes will be lost when running "coder config-ssh".
+#
+Host coder.cosmos-env-development
+	HostName coder.cosmos-env-development
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio cosmos-env-development
+Host coder.cosmos-env-development.workspace
+	HostName coder.cosmos-env-development.workspace
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio cosmos-env-development.workspace
+Host coder.cosmos-env-shared-services
+	HostName coder.cosmos-env-shared-services
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio cosmos-env-shared-services
+Host coder.cosmos-env-shared-services.workspace
+	HostName coder.cosmos-env-shared-services.workspace
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio cosmos-env-shared-services.workspace
+Host coder.galaxy-experiments
+	HostName coder.galaxy-experiments
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio galaxy-experiments
+Host coder.galaxy-experiments.workspace
+	HostName coder.galaxy-experiments.workspace
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio galaxy-experiments.workspace
+Host coder.skylab-workspace
+	HostName coder.skylab-workspace
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio skylab-workspace
+Host coder.skylab-workspace.workspace
+	HostName coder.skylab-workspace.workspace
+	ConnectTimeout=0
+	StrictHostKeyChecking=no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ProxyCommand /opt/homebrew/bin/coder --global-config "/Users/helloben/Library/Application Support/coderv2" ssh --stdio skylab-workspace.workspace
+# ------------END-CODER------------
+
+# --- START CODER VSCODE ---
+Host coder-vscode--*
+  ConnectTimeout 0
+  LogLevel ERROR
+  ProxyCommand "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/bin/coder-darwin-arm64" vscodessh --network-info-dir "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/net" --log-dir "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/log" --session-token-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/session_token" --url-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/url" %h
+  SetEnv  CODER_SSH_SESSION_TYPE=vscode
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+# --- END CODER VSCODE ---
+
+# --- START CODER VSCODE workspaces.galaxy.aidn.sh ---
+Host coder-vscode.workspaces.galaxy.aidn.sh--*
+  ConnectTimeout 0
+  LogLevel ERROR
+  ProxyCommand "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.galaxy.aidn.sh/bin/coder-darwin-arm64" vscodessh --network-info-dir "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/net" --log-dir "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/log" --session-token-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.galaxy.aidn.sh/session_token" --url-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.galaxy.aidn.sh/url" %h
+  SetEnv  CODER_SSH_SESSION_TYPE=vscode
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+# --- END CODER VSCODE workspaces.galaxy.aidn.sh ---
+# --- START CODER JETBRAINS workspaces.galaxy.aidn.sh
+Host coder-jetbrains--datalab-workspace-next.workspace--workspaces.galaxy.aidn.sh
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-workspace-next.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--datalab-workspace-next.workspace--workspaces.galaxy.aidn.sh--bg
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-workspace-next.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--datalab-gpu-workspace.workspace--workspaces.galaxy.aidn.sh
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-gpu-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--datalab-gpu-workspace.workspace--workspaces.galaxy.aidn.sh--bg
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-gpu-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--datalab-workspace.workspace--workspaces.galaxy.aidn.sh
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--datalab-workspace.workspace--workspaces.galaxy.aidn.sh--bg
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart datalab-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--galaxy-workspace.workspace--workspaces.galaxy.aidn.sh
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart galaxy-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--galaxy-workspace.workspace--workspaces.galaxy.aidn.sh--bg
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart galaxy-workspace.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--galaxy-workspace-next.workspace--workspaces.galaxy.aidn.sh
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart galaxy-workspace-next.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+Host coder-jetbrains--galaxy-workspace-next.workspace--workspaces.galaxy.aidn.sh--bg
+  ProxyCommand "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/coder-darwin-arm64" --global-config "/Users/helloben/Library/Application Support/coder-gateway/workspaces.galaxy.aidn.sh/config" ssh --stdio --disable-autostart galaxy-workspace-next.workspace
+  ConnectTimeout 0
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  LogLevel ERROR
+  SetEnv CODER_SSH_SESSION_TYPE=JetBrains
+# --- END CODER JETBRAINS workspaces.galaxy.aidn.sh
+
+# --- START CODER VSCODE workspaces.cosmos.glxy.sh ---
+Host coder-vscode.workspaces.cosmos.glxy.sh--*
+  ConnectTimeout 0
+  LogLevel ERROR
+  ProxyCommand "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.cosmos.glxy.sh/bin/coder-darwin-arm64" vscodessh --network-info-dir "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/net" --session-token-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.cosmos.glxy.sh/session_token" --url-file "/Users/helloben/Library/Application Support/Code/User/globalStorage/coder.coder-remote/workspaces.cosmos.glxy.sh/url" %h
+  SetEnv  CODER_SSH_SESSION_TYPE=vscode
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+# --- END CODER VSCODE workspaces.cosmos.glxy.sh ---

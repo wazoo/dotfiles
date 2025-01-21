@@ -1,0 +1,148 @@
+#set +x
+export XDG_CONFIG_HOME="$HOME/.config"
+#homebrew config
+export HOMEBREW_NO_ENV_HINTS=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# homebrew completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+# asdf - should be first after homebrew so more-sepcific things can override it (pyenv, rbenv)
+#export PATH="$HOME/.asdf/shims:$PATH"
+#. $(brew --prefix asdf)/libexec/asdf.sh
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+# init starship prompt
+eval "$(starship init zsh)"
+# pyenv
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv init -)"
+# gopath
+export PATH="$HOME/.bin/:$(go env GOPATH)/bin:$PATH"
+
+# tabtab
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# rbenv/ruby-buld
+# ruby
+export GEM_HOME="$HOME/.ruby-gems"
+# To link Rubies to Homebrew's OpenSSL 1.1 (which is upgraded) add the following to your ~/.zshrc:
+# Note: this may interfere with building old versions of Ruby (e.g <2.4) that use OpenSSL <1.1.
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+
+# python poetry auto-complete
+# Base Env Vars
+export EDITOR='vim'
+export HISTSIZE=1000
+export PATH="$HOME/.bin:$PATH"
+export AWS_PROFILE="aidn-shared-services"
+export AWS_REGION="us-west-2"
+# Visual Studo Code CLI Command Path
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# direnv hook
+eval "$(direnv hook zsh)"
+
+#1password cli
+source $HOME/.op/plugins.sh
+if [ -z ${OP_CONNECT_HOST+x} ]; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
+
+# General Alias
+alias cdc="cd $HOME/code/work/corp"
+alias cde="cd $HOME/code/work/engineering"
+alias sshpk="cat $HOME/.ssh/id_rsa.pub"
+alias sshpkc="cat $HOME/.ssh/id_rsa.pub | pbcopy"
+#alias aws-login="aws sso login --profile <aws cli profile>"
+alias pwdcp="pwd | pbcopy"
+alias dall="direnv allow"
+#alias op-login=eval $(op signin)
+alias op-login="op signin"
+# Git Alias
+alias catt="git commit -a -m "
+alias cattw="git commit -a -m wip"
+alias cattwp="git commit -a -m wip && git push origin main"
+alias gpom="git push origin main"
+alias gpod="git push origin development"
+alias gpos="git push origin stable"
+alias gpomt="git push origin main --tags"
+alias gpoma="git push origin master"
+alias gpol="git push origin live"
+alias gpop="git push origin production"
+alias gpob="git push origin buildout"
+alias gpo="git push origin"
+alias gpot="git push origin --tags"
+alias gs="git status"
+alias gg="ghq get"
+
+# Teleport Alias
+#alias teleport-login="tsh login --proxy=<proxy hostname>:443 --auth=<proxy auth> --user=<proxy user> <proxy alias>"
+
+#Pre-Commit Alias
+alias pcra="pre-commit run --all-files"
+alias pcin="pre-commit install"
+alias pctr="pre-commit try-repo"
+
+# Kubernetes Alias
+alias kc="kubectl"
+alias vc="vcluster"
+#alias docker=nerdctl # Rancher Desktop
+alias kx=kubectx
+alias kn=kubens
+
+# Terraform Alias
+alias tf="terraform"
+alias tfi="terraform import"
+alias tff="terraform fmt -recursive"
+alias tfup="terraform init --upgrade"
+alias tfpo="terraform plan -out=plan.tfplan"
+alias tfpov="terraform plan -out=plan.tfplan -var-file=variables.tfvars"
+alias tfpnl="terraform plan -lock=false"
+alias tfap="terraform apply plan.tfplan"
+alias tfaro="terraform apply -refresh-only"
+alias cost="infracost breakdown --path=. --format=table --log-level=warn --show-skipped"
+# Packer Alias
+alias pff="packer fmt -recursive ."
+# flux alias
+alias fgsa="flux get sources all"
+alias fgsa="flux get sources git"
+alias fgsa="flux get sources helm"
+alias fgsa="flux get sources chart"
+alias fgkz="flux get kustomizations"
+alias fghr="flux get helmreleases"
+alias fdkz="flux describe kustomization "
+alias fdhr="flux describe helmrelease "
+alias frkz="flux reconcile kustomization"
+alias frkzw="flux reconcile kustomization --with-source"
+alias frhr="flux reconcile helmrelease"
+alias frhrw="flux reconcile helmrelease --with-source"
+
+# Terragrunt Alias
+alias tg="terragrunt"
+alias tgf="terragrunt hclfmt -recursive"
+
+# Replacement Alias
+alias cat="bat"
+alias ls="eza"
+alias df="duf"
+alias du="dust"
+alias curl="curlie"
+alias find="fd"
+alias watch="hwatch"
+
+# krew
+export PATH="${PATH}:${HOME}/.krew/bin"
+# flux
+command -v flux >/dev/null && . <(flux completion zsh)
+# Minikube + Docker
+#eval $(minikube -p minikube docker-env)
+# openjdk
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+eval "$(zoxide init zsh)"
